@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/10/28 18:01:49.000.266,=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/10/28 19:18:03.000.900,=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/10/28 19:23:48.000.114,C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\Tugas OOP\Project\Studi Kasus Percabangan\UStudiKasusPercabangan.dfm</Transaction>
+    <Transaction>2023/10/28 19:23:48.000.114,C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\Tugas OOP\Project\Studi Kasus Percabangan\UStudiKasusPercabangan.pas</Transaction>
+    <Transaction>2023/10/28 19:23:57.000.068,C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Tugas OOP\Project\Studi Kasus Percabangan\StudiKasusPercabangan.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

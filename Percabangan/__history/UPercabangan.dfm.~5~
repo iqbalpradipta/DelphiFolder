@@ -1,0 +1,112 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 381
+  ClientWidth = 680
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox1: TGroupBox
+    Left = 32
+    Top = 8
+    Width = 409
+    Height = 281
+    Caption = 'Percabangan 1'
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 45
+      Top = 227
+      Width = 29
+      Height = 13
+      Caption = 'Harga'
+    end
+    object Label2: TLabel
+      Left = 36
+      Top = 35
+      Width = 38
+      Height = 13
+      Caption = 'Jurusan'
+    end
+    object Label3: TLabel
+      Left = 267
+      Top = 35
+      Width = 38
+      Height = 13
+      Caption = 'Jurusan'
+    end
+    object ComboBoxJurusan: TComboBox
+      Left = 80
+      Top = 32
+      Width = 145
+      Height = 21
+      TabOrder = 0
+      OnChange = ComboBoxJurusanChange
+      Items.Strings = (
+        'Jakarta'
+        'Yogjakarta'
+        'Surabaya')
+    end
+    object EditHarga: TEdit
+      Left = 88
+      Top = 224
+      Width = 145
+      Height = 21
+      TabOrder = 1
+    end
+    object RadioButtonJakarta: TRadioButton
+      Left = 321
+      Top = 34
+      Width = 113
+      Height = 17
+      Caption = 'Jakarta'
+      TabOrder = 2
+      OnClick = RadioButtonJakartaClick
+    end
+    object RadioButtonYogjakarta: TRadioButton
+      Left = 321
+      Top = 57
+      Width = 113
+      Height = 17
+      Caption = 'Yogjakarta'
+      TabOrder = 3
+      OnClick = RadioButtonYogjakartaClick
+    end
+    object RadioButtonSurabaya: TRadioButton
+      Left = 321
+      Top = 80
+      Width = 113
+      Height = 17
+      Caption = 'Surabaya'
+      TabOrder = 4
+      OnClick = RadioButtonSurabayaClick
+    end
+    object RadioGroupJurusan: TRadioGroup
+      Left = 36
+      Top = 80
+      Width = 185
+      Height = 122
+      Caption = 'Jurusan'
+      Items.Strings = (
+        'Jakarta'
+        'Yogjakarta'
+        'Surabaya')
+      TabOrder = 5
+      OnClick = RadioGroupJurusanClick
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 472
+    Top = 8
+    Width = 193
+    Height = 281
+    Caption = 'Percabangan 2'
+    TabOrder = 1
+  end
+end

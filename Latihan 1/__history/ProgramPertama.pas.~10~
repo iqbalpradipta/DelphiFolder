@@ -1,0 +1,90 @@
+unit ProgramPertama;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm2 = class(TForm)
+    gantiJud: TLabel;
+    GantiJudul: TButton;
+    EdJudulForm: TEdit;
+    BtnMerah: TButton;
+    BtnKuning: TButton;
+    BtnSelesai: TButton;
+    BtnBiru: TButton;
+    BtnHijau: TButton;
+    BtnVisible: TButton;
+    LabelTolong: TLabel;
+    GroupDataDiri: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    EdNim: TEdit;
+    EdNama: TEdit;
+    EdKelas: TEdit;
+    procedure GantiJudulClick(Sender: TObject);
+    procedure BtnMerahClick(Sender: TObject);
+    procedure BtnKuningClick(Sender: TObject);
+    procedure BtnSelesaiClick(Sender: TObject);
+    procedure BtnBiruClick(Sender: TObject);
+    procedure BtnHijauClick(Sender: TObject);
+    procedure BtnVisibleClick(Sender: TObject);
+    procedure EdNamaChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm2.BtnMerahClick(Sender: TObject);
+begin
+    form2.Color := clRed;
+end;
+
+procedure TForm2.BtnSelesaiClick(Sender: TObject);
+begin
+  ShowMessage('Tugas Selesai, by Iqbal Pradipta TI.22.C6')
+end;
+
+procedure TForm2.BtnVisibleClick(Sender: TObject);
+begin
+  LabelTolong.Visible := false;
+  BtnVisible.Caption := 'Yah Hilang ... ';
+end;
+
+procedure TForm2.EdNamaChange(Sender: TObject);
+begin
+  EdNama.Text := EdJudulForm.Text;
+end;
+
+procedure TForm2.BtnBiruClick(Sender: TObject);
+begin
+    form2.Color := clBlue;
+end;
+
+procedure TForm2.BtnHijauClick(Sender: TObject);
+begin
+    form2.Color := clGreen;
+end;
+
+procedure TForm2.BtnKuningClick(Sender: TObject);
+begin
+    form2.Color := clYellow;
+end;
+
+procedure TForm2.GantiJudulClick(Sender: TObject);
+begin
+  form2.Caption := EdJudulForm.text;
+end;
+
+end.

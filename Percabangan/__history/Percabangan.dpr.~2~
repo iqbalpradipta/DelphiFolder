@@ -1,0 +1,14 @@
+program Percabangan;
+
+uses
+  Vcl.Forms,
+  UPercabangan in 'UPercabangan.pas' {Percabangan};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TPercabangan, Percabangan);
+  Application.Run;
+end.

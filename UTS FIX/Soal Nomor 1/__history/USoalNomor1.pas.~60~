@@ -1,0 +1,171 @@
+unit USoalNomor1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Label1: TLabel;
+    EditQtyMangga: TEdit;
+    EditQtyKlengkeng: TEdit;
+    EditQtySemangka: TEdit;
+    EditQtyAnggur: TEdit;
+    EditQtyJeruk: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    EditHargaMangga: TEdit;
+    EditHargaKlengkeng: TEdit;
+    EditHargaSemangka: TEdit;
+    EditHargaAnggur: TEdit;
+    EditHargaJeruk: TEdit;
+    Label10: TLabel;
+    EditDiscount: TEdit;
+    EditTotalHarga: TEdit;
+    BtnHitung: TButton;
+    EditSubTotal: TEdit;
+    Label11: TLabel;
+    EditUangBayar: TEdit;
+    Label12: TLabel;
+    EditKembalian: TEdit;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
+    EditDisc: TEdit;
+    Label20: TLabel;
+    BtnReset: TButton;
+    BtnExit: TButton;
+    CheckBoxMangga: TCheckBox;
+    CheckBoxKlengkeng: TCheckBox;
+    CheckBoxSemangka: TCheckBox;
+    CheckBoxAnggur: TCheckBox;
+    CheckBoxJeruk: TCheckBox;
+    procedure BtnHitungClick(Sender: TObject);
+    procedure BtnResetClick(Sender: TObject);
+    procedure BtnExitClick(Sender: TObject);
+  private
+  var
+    QtyMangga, QtyKlengkeng, QtySemangka, QtyAnggur, QtyJeruk, DiscountPersen: Integer;
+  TotalHarga, Discount, SubTotal, HargaMangga, HargaKlengkeng, HargaSemangka, HargaAnggur, HargaJeruk : Real;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.BtnExitClick(Sender: TObject);
+begin
+  ShowMessage('Program will be stop. Good Bye...');
+  close;
+end;
+
+procedure TForm1.BtnHitungClick(Sender: TObject);
+var
+  uangbayar, kembalian : Real;
+begin
+  QtyMangga := StrToIntDef(EditQtyMangga.Text,0);
+  QtyKlengkeng := StrToIntDef(EditQtyKlengkeng.Text,0);
+  QtySemangka := StrToIntDef(EditQtySemangka.Text,0);
+  QtyAnggur := StrToIntDef(EditQtyAnggur.Text,0);
+  QtyJeruk := StrToIntDef(EditQtyJeruk.Text,0);
+  DiscountPersen := StrToIntDef(EditDisc.Text,0);
+
+  
+  if (CheckBoxMangga.Checked = true) then
+  begin
+    HargaMangga := QtyMangga * 20000;
+  end
+  else if QtyMangga = 0 then
+  begin
+    ShowMessage('Input Quantity');
+  end;
+  if (CheckBoxKlengkeng.Checked = true) then
+  begin
+    HargaKlengkeng := QtyKlengkeng * 25000;
+  end;
+  if (CheckBoxSemangka.Checked = true) then
+  begin
+    HargaSemangka := QtySemangka * 10000;
+  end;
+  if (CheckBoxAnggur.Checked = true) then
+  begin
+    HargaAnggur := QtyAnggur * 22000;
+  end;
+  if (CheckBoxJeruk.Checked = true) then
+  begin
+    HargaJeruk := QtyJeruk * 15000;
+  end
+  else;
+
+  EditHargaKlengkeng.Text := CurrToStr(HargaKlengkeng);
+  EditHargaMangga.Text := CurrToStr(HargaMangga);
+  EditHargaSemangka.Text := CurrToStr(HargaSemangka);
+  EditHargaAnggur.Text := CurrToStr(HargaAnggur);
+  EditHargaJeruk.Text := CurrToStr(HargaJeruk);
+
+  SubTotal := HargaMangga + HargaKlengkeng + HargaSemangka + HargaAnggur + HargaJeruk;
+  EditSubTotal.Text := CurrToStr(SubTotal);
+
+
+  if SubTotal >= 0 then
+    Discount := (DiscountPersen / 100) * SubTotal;
+
+  EditDiscount.Text := CurrToStr(Discount);
+
+  TotalHarga := SubTotal - Discount;
+  EditTotalHarga.Text := CurrToStr(TotalHarga);
+
+  uangbayar := StrToCurr(EditUangBayar.Text);
+
+  if uangbayar >= 0 then
+  begin
+    kembalian := uangbayar - TotalHarga;
+  end;
+
+  EditTotalHarga.Text := CurrToStr(TotalHarga);
+  EditKembalian.Text := CurrToStr(kembalian);
+
+end;
+
+procedure TForm1.BtnResetClick(Sender: TObject);
+begin
+  EditQtyMangga.Text := '0';
+  EditQtyKlengkeng.Text := '0';
+  EditQtySemangka.Text := '0';
+  EditQtyAnggur.Text := '0';
+  EditQtyJeruk.Text := '0';
+  EditDisc.Text := '0';
+  EditHargaMangga.Text := '0';
+  EditHargaKlengkeng.Text := '0';
+  EditHargaSemangka.Text := '0';
+  EditHargaAnggur.Text := '0';
+  EditHargaJeruk.Text := '0';
+  EditSubTotal.Text := '0';
+  EditDiscount.Text := '0';
+  EditTotalHarga.Text := '0';
+  EditUangBayar.Text := '0';
+  EditKembalian.Text := '0';
+
+  ShowMessage('Reset Success');
+
+end;
+
+end.

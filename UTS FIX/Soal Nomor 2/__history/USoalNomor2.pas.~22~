@@ -1,0 +1,93 @@
+unit USoalNomor2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Label1: TLabel;
+    EditUang: TEdit;
+    BtnPecahkan: TButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    EditSeratus: TEdit;
+    EditGocap: TEdit;
+    Edit20: TEdit;
+    EditCeban: TEdit;
+    EditGoceng: TEdit;
+    Edit2ribu: TEdit;
+    EditSeribu: TEdit;
+    EditGopek: TEdit;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    procedure BtnPecahkanClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.BtnPecahkanClick(Sender: TObject);
+var
+  masukkan,seratus_ribu,lima_puluh_ribu,sepuluh_puluh_ribu,
+  lima_ribu,seribu,lima_ratus,seratus,lima_puluh,sepuluh,satu:integer;
+
+begin
+  {100 ribu}
+  masukkan:=StrToInt(EditUang.Text);
+  seratus_ribu:=masukkan div 100000;
+  EditSeratus.Text:=IntToStr(seratus_ribu);
+  {50 ribu}
+  masukkan:=StrToInt(EditSeratus.Text);
+  lima_puluh_ribu:=masukkan div 50000 mod 2;
+  EditGocap.Text:=inttostr(lima_puluh_ribu);
+  {20 ribu}
+  masukkan:=StrToInt(EditUang.Text);
+  sepuluh_puluh_ribu:=masukkan div 20000 mod 2;
+  Edit20.Text:=inttostr(sepuluh_puluh_ribu);
+  {10 ribu}
+  masukkan:=StrToInt(EditUang.Text);
+  sepuluh_puluh_ribu:=masukkan div 10000 mod 5;
+  EditCeban.Text:=inttostr(sepuluh_puluh_ribu);
+  {5 ribu}
+  masukkan:=StrToInt(EditUang.Text);
+  Lima_ribu:=masukkan div 5000 mod 2;
+  EditGoceng.Text:=inttostr(lima_ribu);
+  {seribu}
+  masukkan:=StrToInt(EditUang.Text);
+  seribu:=masukkan div 1000 mod 5;
+  EditSeribu.Text:=inttostr(seribu);
+  {lima ratus}
+  masukkan:=StrToInt(EditUang.Text);
+  lima_ratus:=masukkan div 500 mod 2;
+  EditGopek.Text:=inttostr(lima_ratus);
+
+end;
+
+end.

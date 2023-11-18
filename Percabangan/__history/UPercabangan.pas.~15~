@@ -1,0 +1,165 @@
+unit UPercabangan;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
+    Label1: TLabel;
+    ComboBoxJurusan: TComboBox;
+    EditHarga: TEdit;
+    Label2: TLabel;
+    RadioButtonJakarta: TRadioButton;
+    RadioButtonYogjakarta: TRadioButton;
+    RadioButtonSurabaya: TRadioButton;
+    Label3: TLabel;
+    RadioGroupJurusan: TRadioGroup;
+    CheckBoxFanta: TCheckBox;
+    CheckBoxCocaCola: TCheckBox;
+    CheckBoxSprite: TCheckBox;
+    Label4: TLabel;
+    EditTotalHarga: TEdit;
+    Label5: TLabel;
+    BtnHitungTotal: TButton;
+    procedure ComboBoxJurusanChange(Sender: TObject);
+    procedure RadioButtonJakartaClick(Sender: TObject);
+    procedure RadioButtonYogjakartaClick(Sender: TObject);
+    procedure RadioButtonSurabayaClick(Sender: TObject);
+    procedure RadioGroupJurusanClick(Sender: TObject);
+    procedure BtnHitungTotalClick(Sender: TObject);
+    procedure CheckBoxFantaClick(Sender: TObject);
+    procedure CheckBoxCocaColaClick(Sender: TObject);
+    procedure CheckBoxSpriteClick(Sender: TObject);
+  private
+    total : Integer;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.BtnHitungTotalClick(Sender: TObject);
+begin
+  Total := 0;
+  if CheckBoxFanta.Checked = True then
+    begin
+      total := Total + 6000;
+    end;
+
+  if CheckBoxCocaCola.Checked = True then
+    begin
+      total := Total + 8000;
+    end;
+
+  if CheckBoxSprite.Checked = True then
+    begin
+      total := Total + 10000;
+    end;
+
+  EditTotalHarga.Text := IntToStr(total);
+
+end;
+
+procedure TForm1.CheckBoxCocaColaClick(Sender: TObject);
+begin
+    if CheckBoxCocaCola.Checked = false then
+    begin
+      total := total - 8000;
+    end;
+end;
+
+procedure TForm1.CheckBoxFantaClick(Sender: TObject);
+begin
+  if CheckBoxFanta.Checked = false then
+    begin
+      total := total - 6000;
+    end;
+
+end;
+
+procedure TForm1.CheckBoxSpriteClick(Sender: TObject);
+begin
+  if CheckBoxFanta.Checked = false then
+    begin
+      total := total - 10000;
+    end;
+end;
+
+procedure TForm1.ComboBoxJurusanChange(Sender: TObject);
+begin
+  if ComboBoxJurusan.Text = 'Jakarta' then
+    begin
+      EditHarga.Text := '100.000';
+    end
+  else if ComboBoxJurusan.Text = 'Yogjakarta' then
+    begin
+      EditHarga.Text := '200.000';
+    end
+  else if ComboBoxJurusan.Text = 'Surabaya' then
+    begin
+      EditHarga.Text := '300.000';
+    end
+  else
+    begin
+      EditHarga.Text := '0';
+    end;
+end;
+
+procedure TForm1.RadioButtonJakartaClick(Sender: TObject);
+begin
+  if RadioButtonJakarta.Checked = True then
+    begin
+      EditHarga.Text := '100.000';
+    end;
+
+end;
+
+procedure TForm1.RadioButtonSurabayaClick(Sender: TObject);
+begin
+  if RadioButtonSurabaya.Checked = True then
+    begin
+      EditHarga.Text := '300.000';
+    end;
+end;
+
+procedure TForm1.RadioButtonYogjakartaClick(Sender: TObject);
+begin
+  if RadioButtonYogjakarta.Checked = True then
+    begin
+      EditHarga.Text := '200.000';
+    end;
+end;
+
+procedure TForm1.RadioGroupJurusanClick(Sender: TObject);
+begin
+  if RadioGroupJurusan.ItemIndex = 0 then
+    begin
+      EditHarga.Text := '100.000';
+    end
+  else if RadioGroupJurusan.ItemIndex = 1 then
+    begin
+      EditHarga.Text := '200.000';
+    end
+  else if RadioGroupJurusan.ItemIndex = 2 then
+    begin
+      EditHarga.Text := '300.000';
+    end
+  else
+    begin
+      EditHarga.Text := '0';
+    end;
+
+end;
+
+end.

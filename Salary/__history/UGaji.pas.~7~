@@ -1,0 +1,101 @@
+unit UGaji;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmGaji = class(TForm)
+    Panel1: TPanel;
+    panelgajibersih: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    EditNik: TEdit;
+    EditNama: TEdit;
+    EditBanyakAnak: TEdit;
+    EditGaji: TEdit;
+    BtnHitungGaji: TButton;
+    BtnInput: TButton;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label9: TLabel;
+    EditTunjanganIstri: TEdit;
+    EditTunjanganAnak: TEdit;
+    EditTotalTunjangan: TEdit;
+    EditGajiKotor: TEdit;
+    EditZakat: TEdit;
+    Label8: TLabel;
+    procedure BtnHitungGajiClick(Sender: TObject);
+    procedure BtnInputClick(Sender: TObject);
+    procedure EditNikKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmGaji: TfrmGaji;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmGaji.BtnHitungGajiClick(Sender: TObject);
+
+var
+vJmlAnak : Integer;
+vGajiPokok, vTunjanganAnak, vTunjanganIstri,
+vTotalTunjangan, vGajiKotor, vZakat, vGajiBersih : Currency;
+
+begin
+   vJmlAnak := StrToInt(EditBanyakAnak.Text);
+   vGajiPokok := StrToCurr(EditGaji.Text);
+   vTunjanganIstri := 0.2 * vGajiPokok;
+   vTunjanganAnak := (0.5 * vGajiPokok) * vJmlAnak;
+   vTotalTunjangan := vTunjanganIstri + vTunjanganAnak;
+   vGajiKotor := vGajiPokok + vTotalTunjangan;
+   vZakat := 0.025 *  vGajiKotor;
+   vGajiBersih := vGajiKotor - vZakat;
+
+//   konversi ke string untuk ditampilkan ke display
+   EditTunjanganIstri.Text := FormatFloat('#,##0', vTunjanganIstri);
+   EditTunjanganAnak.Text := FormatFloat('#,##0', vTunjanganAnak);
+   EditTotalTunjangan.Text := FormatFloat('#,##0', vTotalTunjangan);
+   EditGajiKotor.Text := FormatFloat('#,##0', vGajiKotor);
+   EditZakat.Text := FormatFloat('#,##0', vZakat);
+   panelgajibersih.Caption := 'Gaji Bersih : ' + FormatFloat('#,##0', vGajiBersih);
+
+
+
+end;
+
+procedure TfrmGaji.BtnInputClick(Sender: TObject);
+begin
+  EditNik.Text := '';
+  EditNama.Text := '';
+  EditBanyakAnak.Text := '';
+  EditGaji.Text := '';
+  EditTunjanganIstri.Text := '';
+  EditTunjanganAnak.Text := '';
+  EditTotalTunjangan.Text := '';
+  EditGajiKotor.Text := '';
+  EditZakat.Text := '';
+  panelgajibersih.Caption := '';
+  EditNik.SetFocus;
+end;
+
+procedure TfrmGaji.EditNikKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = Char(13) then
+    EditNama.SetFocus;
+end;
+
+end.
