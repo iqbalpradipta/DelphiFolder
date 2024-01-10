@@ -1,0 +1,18 @@
+program PPOS_IqbalPradipta;
+
+uses
+  Vcl.Forms,
+  UPOS_IqbalPradipta in 'UPOS_IqbalPradipta.pas' {frmMain},
+  UPOS_MasterData in 'UPOS_MasterData.pas' {Form1},
+  UPOS_DM in 'UPOS_DM.pas' {DM: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDM, DM);
+  Application.Run;
+end.

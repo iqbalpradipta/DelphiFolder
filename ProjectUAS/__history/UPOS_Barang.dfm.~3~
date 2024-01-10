@@ -1,0 +1,25 @@
+inherited frmBarang: TfrmBarang
+  Caption = 'Master Data Barang'
+  FormStyle = fsMDIChild
+  Position = poMainFormCenter
+  Visible = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    inherited DBNavigator1: TDBNavigator
+      Hints.Strings = ()
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitHeight = 31
+    end
+  end
+  inherited Panel3: TPanel
+    ExplicitLeft = -6
+    ExplicitTop = 39
+  end
+  inherited FDQuery1: TFDQuery
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM BARANG')
+  end
+end

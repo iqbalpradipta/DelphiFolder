@@ -1,0 +1,124 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Dasar Perulangan'
+  ClientHeight = 437
+  ClientWidth = 544
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 544
+    Height = 41
+    Align = alTop
+    Caption = 'Dasar Perulangan'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    ExplicitLeft = 128
+    ExplicitTop = 136
+    ExplicitWidth = 185
+  end
+  object Memo1: TMemo
+    Left = 0
+    Top = 41
+    Width = 329
+    Height = 396
+    Align = alLeft
+    ScrollBars = ssBoth
+    TabOrder = 1
+  end
+  object btnForToDo: TButton
+    Left = 328
+    Top = 41
+    Width = 216
+    Height = 40
+    Caption = 'For To Do'
+    TabOrder = 2
+    OnClick = btnForToDoClick
+  end
+  object btnForDownToDo: TButton
+    Left = 328
+    Top = 81
+    Width = 216
+    Height = 40
+    Caption = 'For Down To Do'
+    TabOrder = 3
+    OnClick = btnForToDoClick
+  end
+  object btnWhileDo: TButton
+    Left = 328
+    Top = 121
+    Width = 216
+    Height = 40
+    Caption = 'While Do'
+    TabOrder = 4
+    OnClick = btnForToDoClick
+  end
+  object btnRepeatUntil: TButton
+    Left = 328
+    Top = 161
+    Width = 216
+    Height = 40
+    Caption = 'Repeat Until'
+    TabOrder = 5
+    OnClick = btnForToDoClick
+  end
+  object btnLabel: TButton
+    Left = 328
+    Top = 201
+    Width = 216
+    Height = 40
+    Caption = 'Label'
+    TabOrder = 6
+    OnClick = btnForToDoClick
+  end
+  object btnPerulanganTersarang: TButton
+    Left = 328
+    Top = 241
+    Width = 216
+    Height = 40
+    Caption = 'Perulangan Tersarang'
+    TabOrder = 7
+    OnClick = btnForToDoClick
+  end
+  object btnBanyakKondisi: TButton
+    Left = 328
+    Top = 281
+    Width = 216
+    Height = 40
+    Caption = 'Banyak Kondisi'
+    TabOrder = 8
+    OnClick = btnForToDoClick
+  end
+  object btnContinue: TButton
+    Left = 328
+    Top = 319
+    Width = 216
+    Height = 40
+    Caption = 'Continue'
+    TabOrder = 9
+    OnClick = btnForToDoClick
+  end
+  object BtnBreak: TButton
+    Left = 328
+    Top = 359
+    Width = 216
+    Height = 40
+    Caption = 'Break'
+    TabOrder = 10
+    OnClick = btnForToDoClick
+  end
+end

@@ -1,0 +1,45 @@
+unit UPOS_Barang;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UPOS_MasterData, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.DBCtrls, Vcl.ExtCtrls,
+  Vcl.Grids, Vcl.DBGrids, SMDBGrid, RzPanel, RzDBNav;
+
+type
+  TfrmBarang = class(TfrmMasterData)
+    FDQuery1ITEMID: TWideStringField;
+    FDQuery1ITEMNAME: TWideStringField;
+    FDQuery1MINSTOCK: TFMTBCDField;
+    FDQuery1MAXSTOCK: TFMTBCDField;
+    FDQuery1HARGABELI: TFMTBCDField;
+    FDQuery1HARGAJUAL: TFMTBCDField;
+    FDQuery1ISACTIVE: TBooleanField;
+    FDQuery1UNIT: TWideStringField;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmBarang: TfrmBarang;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmBarang.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  WindowState := wsMinimized;
+  frmBarang := Nil;
+  Action := caFree;
+end;
+
+end.

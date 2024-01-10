@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/10/28 18:01:49.000.266,=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/11/07 18:35:54.000.882,=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/02 19:04:30.000.810,=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/02 19:05:12.000.223,D:\Tugas OOP\Project\ProjectUAS\UPOS_IqbalPradipta.pas=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/02 19:05:12.000.223,D:\Tugas OOP\Project\ProjectUAS\UPOS_IqbalPradipta.dfm=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/12/02 19:05:30.000.593,D:\Tugas OOP\Project\ProjectUAS\PPOS_IqbalPradipta.dproj=C:\Users\ACER-USER\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/12/05 23:14:52.000.800,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/05 23:20:09.000.447,D:\Tugas OOP\Project\ProjectUAS\UMasterData.dfm=D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm</Transaction>
+    <Transaction>2023/12/05 23:20:09.000.447,D:\Tugas OOP\Project\ProjectUAS\UMasterData.pas=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/05 23:20:59.000.586,D:\Tugas OOP\Project\ProjectUAS\UMasterData.pas=</Transaction>
+    <Transaction>2023/12/05 23:21:09.000.353,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/05 23:22:51.000.325,D:\Tugas OOP\Project\ProjectUAS\UPOS_MasterData.pas=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/05 23:22:51.000.325,D:\Tugas OOP\Project\ProjectUAS\UPOS_MasterData.dfm=D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm</Transaction>
+    <Transaction>2023/12/05 23:28:17.000.556,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/06 06:39:13.000.583,D:\Tugas OOP\Project\ProjectUAS\UPOS_DM.pas=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/06 06:39:13.000.583,D:\Tugas OOP\Project\ProjectUAS\UPOS_DM.dfm=D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm</Transaction>
+    <Transaction>2023/12/06 08:58:31.000.317,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/06 08:59:42.000.512,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_Barang.pas</Transaction>
+    <Transaction>2023/12/06 08:59:42.000.512,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_Barang.dfm</Transaction>
+    <Transaction>2023/12/06 09:02:25.000.077,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/06 09:03:08.000.387,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_Supplier.pas</Transaction>
+    <Transaction>2023/12/06 09:03:08.000.387,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_Supplier.dfm</Transaction>
+    <Transaction>2023/12/06 09:05:05.000.915,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/06 09:06:43.000.903,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_CUSTOMER.dfm</Transaction>
+    <Transaction>2023/12/06 09:06:43.000.903,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_CUSTOMER.pas</Transaction>
+    <Transaction>2023/12/06 09:07:02.000.789,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/06 09:08:06.000.333,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_Unit.pas</Transaction>
+    <Transaction>2023/12/06 09:08:06.000.333,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_Unit.dfm</Transaction>
+    <Transaction>2023/12/09 19:37:42.000.751,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 14:16:06.000.547,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 14:19:13.000.218,D:\Tugas OOP\Project\ProjectUAS\UPOS_TransaksiData.dfm=D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm</Transaction>
+    <Transaction>2023/12/26 14:19:13.000.218,D:\Tugas OOP\Project\ProjectUAS\UPOS_TransaksiData.pas=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 14:49:23.000.437,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 14:49:55.000.656,D:\Tugas OOP\Project\ProjectUAS\UPOS_Pembelian.pas=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 14:49:55.000.656,D:\Tugas OOP\Project\ProjectUAS\UPOS_Pembelian.dfm=D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm</Transaction>
+    <Transaction>2023/12/26 16:25:57.000.692,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:29:49.000.997,D:\Tugas OOP\Project\ProjectUAS\UPOS_TransaksiData.dfm=D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm</Transaction>
+    <Transaction>2023/12/26 16:29:49.000.997,D:\Tugas OOP\Project\ProjectUAS\UPOS_TransaksiData.pas=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:51:15.000.938,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 16:51:34.000.410,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_Pembelian.dfm</Transaction>
+    <Transaction>2023/12/26 16:51:34.000.410,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_Pembelian.pas</Transaction>
+    <Transaction>2023/12/26 17:23:37.000.664,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 17:24:00.000.633,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_CreatePO.pas</Transaction>
+    <Transaction>2023/12/26 17:24:00.000.633,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_CreatePO.dfm</Transaction>
+    <Transaction>2023/12/26 19:36:41.000.807,=D:\Tugas OOP\Project\ProjectUAS\Unit1.pas</Transaction>
+    <Transaction>2023/12/26 19:40:04.000.965,D:\Tugas OOP\Project\ProjectUAS\Unit1.dfm=D:\Tugas OOP\Project\ProjectUAS\UPOS_AddItem.dfm</Transaction>
+    <Transaction>2023/12/26 19:40:04.000.965,D:\Tugas OOP\Project\ProjectUAS\Unit1.pas=D:\Tugas OOP\Project\ProjectUAS\UPOS_AddItem.pas</Transaction>
+  </Transactions>
+</BorlandProject>

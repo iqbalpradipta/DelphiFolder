@@ -1,0 +1,22 @@
+inherited frmCustomer: TfrmCustomer
+  Caption = 'Master Customer'
+  FormStyle = fsMDIChild
+  Position = poMainFormCenter
+  Visible = True
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    inherited RzDBNavigator1: TRzDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited Panel3: TPanel
+    ExplicitHeight = 431
+    inherited RzPanel1: TRzPanel
+      ExplicitLeft = 2
+      ExplicitTop = 161
+      ExplicitHeight = 268
+    end
+  end
+end

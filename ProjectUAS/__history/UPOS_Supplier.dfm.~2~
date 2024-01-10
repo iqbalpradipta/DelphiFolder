@@ -1,0 +1,16 @@
+inherited frmSupplier: TfrmSupplier
+  Caption = 'Master Supplier'
+  FormStyle = fsMDIChild
+  Position = poMainFormCenter
+  Visible = True
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    inherited DBNavigator1: TDBNavigator
+      Hints.Strings = ()
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitHeight = 31
+    end
+  end
+end

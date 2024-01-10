@@ -1,0 +1,31 @@
+inherited frmUnit: TfrmUnit
+  Caption = 'Master Unit'
+  FormStyle = fsMDIChild
+  Position = poMainFormCenter
+  Visible = True
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    inherited RzDBNavigator1: TRzDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited FDQuery1: TFDQuery
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM UNITS')
+    object FDQuery1UNIT: TWideStringField
+      FieldName = 'UNIT'
+      Origin = 'UNIT'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 10
+    end
+    object FDQuery1UNITNAME: TWideStringField
+      FieldName = 'UNITNAME'
+      Origin = 'UNITNAME'
+      Size = 50
+    end
+  end
+end

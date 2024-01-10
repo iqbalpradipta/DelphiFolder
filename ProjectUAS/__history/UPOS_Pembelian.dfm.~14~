@@ -1,0 +1,241 @@
+inherited frmPembelian: TfrmPembelian
+  Caption = 'Transaksi Pembelian'
+  ClientHeight = 463
+  OnClose = FormClose
+  OnCreate = FormCreate
+  ExplicitHeight = 502
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    inherited RzDBNavigator1: TRzDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited RzPanel2: TRzPanel
+    Height = 222
+    ExplicitHeight = 222
+    inherited RzPageControl2: TRzPageControl
+      Width = 678
+      Height = 218
+      ExplicitWidth = 678
+      ExplicitHeight = 218
+      FixedDimension = 19
+      inherited TabSheet2: TRzTabSheet
+        ExplicitWidth = 674
+        ExplicitHeight = 195
+        inherited SMDBGridDetail: TSMDBGrid
+          Width = 674
+          Height = 195
+        end
+      end
+    end
+    object RzPanel3: TRzPanel
+      Left = 680
+      Top = 2
+      Width = 98
+      Height = 218
+      Align = alRight
+      BorderOuter = fsBump
+      TabOrder = 1
+      object RzBtnAddItem: TRzBitBtn
+        Left = 2
+        Top = 2
+        Width = 94
+        Align = alTop
+        Caption = '& Add Item'
+        TabOrder = 0
+        OnClick = RzBtnAddItemClick
+      end
+    end
+  end
+  inherited RzPanel1: TRzPanel
+    inherited RzPageControl1: TRzPageControl
+      FixedDimension = 19
+      inherited TabSheet1: TRzTabSheet
+        inherited SMDBGridHeader: TSMDBGrid
+          ExOptions = [eoBooleanAsCheckBox, eoENTERlikeTAB, eoKeepSelection, eoStandardPopup, eoBLOBEditor, eoTitleWordWrap, eoFilterAutoApply]
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'PURCHASEID'
+              ReadOnly = True
+              Width = 140
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'VENDACCOUNT'
+              ReadOnly = True
+              Width = 133
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PURCHASEDATE'
+              Width = 123
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ISPPN'
+              Width = 77
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOTALAMOUNT'
+              ReadOnly = True
+              Width = 105
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'GRANDTOTAL'
+              ReadOnly = True
+              Width = 96
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TRANSDATE'
+              ReadOnly = True
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USERID'
+              ReadOnly = True
+              Width = 90
+              Visible = True
+            end>
+        end
+      end
+    end
+  end
+  inherited FDQueryHeader: TFDQuery
+    AfterInsert = FDQueryHeaderAfterInsert
+    AfterScroll = FDQueryHeaderAfterScroll
+    OnNewRecord = FDQueryHeaderNewRecord
+    SQL.Strings = (
+      'SELECT * FROM PURCHASEHEADER')
+    object FDQueryHeaderPURCHASEID: TWideStringField
+      FieldName = 'PURCHASEID'
+      Origin = 'PURCHASEID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object FDQueryHeaderVENDACCOUNT: TWideStringField
+      FieldName = 'VENDACCOUNT'
+      Origin = 'VENDACCOUNT'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 10
+    end
+    object FDQueryHeaderPURCHASEDATE: TDateField
+      FieldName = 'PURCHASEDATE'
+      Origin = 'PURCHASEDATE'
+    end
+    object FDQueryHeaderISPPN: TBooleanField
+      FieldName = 'ISPPN'
+      Origin = 'ISPPN'
+    end
+    object FDQueryHeaderTOTALAMOUNT: TFMTBCDField
+      FieldName = 'TOTALAMOUNT'
+      Origin = 'TOTALAMOUNT'
+      DisplayFormat = '#,##0'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryHeaderGRANDTOTAL: TFMTBCDField
+      FieldName = 'GRANDTOTAL'
+      Origin = 'GRANDTOTAL'
+      DisplayFormat = '#,##0'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryHeaderUSERID: TWideStringField
+      FieldName = 'USERID'
+      Origin = 'USERID'
+      Size = 10
+    end
+    object FDQueryHeaderTRANSDATE: TSQLTimeStampField
+      FieldName = 'TRANSDATE'
+      Origin = 'TRANSDATE'
+    end
+  end
+  inherited FDQueryDetail: TFDQuery
+    AfterPost = FDQueryDetailAfterPost
+    MasterFields = 'PURCHASEID'
+    SQL.Strings = (
+      'SELECT * FROM PURCHASEDETAIL')
+    object FDQueryDetailPURCHASEID: TWideStringField
+      FieldName = 'PURCHASEID'
+      Origin = 'PURCHASEID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object FDQueryDetailITEMID: TWideStringField
+      FieldName = 'ITEMID'
+      Origin = 'ITEMID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQueryDetailQTY: TFMTBCDField
+      FieldName = 'QTY'
+      Origin = 'QTY'
+      OnChange = FDQueryDetailQTYChange
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryDetailUNIT: TWideStringField
+      FieldName = 'UNIT'
+      Origin = 'UNIT'
+      Size = 10
+    end
+    object FDQueryDetailPRICE: TFMTBCDField
+      FieldName = 'PRICE'
+      Origin = 'PRICE'
+      OnChange = FDQueryDetailPRICEChange
+      DisplayFormat = '#,##0'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryDetailLINEAMOUNT: TFMTBCDField
+      FieldName = 'LINEAMOUNT'
+      Origin = 'LINEAMOUNT'
+      DisplayFormat = '#,##0'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryDetailRECORDID: TLargeintField
+      FieldName = 'RECORDID'
+      Origin = 'RECORDID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQueryDetailTRANSDATE: TSQLTimeStampField
+      FieldName = 'TRANSDATE'
+      Origin = 'TRANSDATE'
+    end
+    object FDQueryDetailUSERID: TWideStringField
+      FieldName = 'USERID'
+      Origin = 'USERID'
+      Size = 10
+    end
+  end
+  object FDQueryVendor: TFDQuery
+    Active = True
+    Connection = DM.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM VENDOR')
+    Left = 203
+    Top = 153
+  end
+  object DataSourceVendor: TDataSource
+    DataSet = FDQueryVendor
+    Left = 291
+    Top = 153
+  end
+end

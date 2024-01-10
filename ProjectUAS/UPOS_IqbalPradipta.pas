@@ -1,0 +1,114 @@
+unit UPOS_IqbalPradipta;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ToolWin;
+
+type
+  TfrmMain = class(TForm)
+    MainMenu1: TMainMenu;
+    MasterData1: TMenuItem;
+    ransaksiData1: TMenuItem;
+    Reporting1: TMenuItem;
+    Barang1: TMenuItem;
+    Supplier1: TMenuItem;
+    Customer1: TMenuItem;
+    Unit1: TMenuItem;
+    Pembelian1: TMenuItem;
+    Penjualan1: TMenuItem;
+    ReportPenjualan1: TMenuItem;
+    ReportPembelian1: TMenuItem;
+    StatusBar1: TStatusBar;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    ToolButton3: TToolButton;
+    ToolButton4: TToolButton;
+    ToolButton5: TToolButton;
+    ToolButton6: TToolButton;
+    ToolButton7: TToolButton;
+    ToolButton8: TToolButton;
+    ToolButton9: TToolButton;
+    ToolButton10: TToolButton;
+    Image1: TImage;
+    procedure Barang1Click(Sender: TObject);
+    procedure Supplier1Click(Sender: TObject);
+    procedure Customer1Click(Sender: TObject);
+    procedure Unit1Click(Sender: TObject);
+    procedure Pembelian1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function GetNumberSequencePO(sValue : string):String;
+  end;
+
+var
+  frmMain: TfrmMain;
+
+implementation
+Uses UPOS_DM, UPOS_Barang, UPOS_CUSTOMER, UPOS_Supplier, UPOS_Unit, UPOS_Pembelian;
+
+{$R *.dfm}
+
+function TfrmMain.GetNumberSequencePO(sValue: string):String;
+begin
+  //Ambil Store procedure
+  DM.FDStoredProcPO.Close;
+  DM.FDStoredProcPO.Prepare;
+  DM.FDStoredProcPO.StoredProcName := 'POS.dbo.GetNumberSequence';
+  DM.FDStoredProcPO.ParamByName('@Param').AsString := sValue;
+  DM.FDStoredProcPO.Open;
+
+  Result := DM.FDStoredProcPO.Fields[0].AsString;
+end;
+
+procedure TfrmMain.Barang1Click(Sender: TObject);
+begin
+  if frmBarang = nil then
+      begin
+        Application.CreateForm(TfrmBarang, frmBarang);
+        frmBarang.Show;
+      end;
+end;
+
+procedure TfrmMain.Customer1Click(Sender: TObject);
+begin
+  if frmCustomer = nil then
+      begin
+        Application.CreateForm(TfrmCustomer, frmCustomer);
+        frmCustomer.Show;
+      end;
+end;
+
+procedure TfrmMain.Pembelian1Click(Sender: TObject);
+begin
+  if frmPembelian = nil then
+      begin
+        Application.CreateForm(TfrmPembelian, frmPembelian);
+        frmPembelian.Show;
+      end;
+end;
+
+procedure TfrmMain.Supplier1Click(Sender: TObject);
+begin
+  if frmSupplier = nil then
+      begin
+        Application.CreateForm(TfrmSupplier, frmSupplier);
+        frmSupplier.Show;
+      end;
+end;
+
+procedure TfrmMain.Unit1Click(Sender: TObject);
+begin
+  if frmUnit = nil then
+      begin
+        Application.CreateForm(TfrmUnit, frmUnit);
+        frmUnit.Show;
+      end;
+end;
+
+end.

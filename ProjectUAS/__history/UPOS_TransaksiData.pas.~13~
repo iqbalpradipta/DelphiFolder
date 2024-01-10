@@ -1,0 +1,28 @@
+unit UPOS_TransaksiData;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RzPanel, RzDBNav, Vcl.ExtCtrls;
+
+type
+  TfrmTransaksiData = class(TForm)
+    Panel1: TPanel;
+    RzDBNavigator1: TRzDBNavigator;
+    RzPanel2: TRzPanel;
+    RzPanel1: TRzPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmTransaksiData: TfrmTransaksiData;
+
+implementation
+
+{$R *.dfm}
+
+end.
