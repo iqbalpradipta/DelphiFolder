@@ -1,0 +1,80 @@
+object frmReportPurchase: TfrmReportPurchase
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'frmReportPurchase'
+  ClientHeight = 176
+  ClientWidth = 323
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object RzPanel1: TRzPanel
+    Left = 0
+    Top = 0
+    Width = 323
+    Height = 176
+    Align = alClient
+    BorderOuter = fsBump
+    TabOrder = 0
+    ExplicitLeft = 48
+    ExplicitTop = 72
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object RzPanel2: TRzPanel
+      Left = 2
+      Top = 144
+      Width = 319
+      Height = 30
+      Align = alBottom
+      BorderOuter = fsBump
+      TabOrder = 0
+      object RzBtnPrint: TRzBitBtn
+        Left = 242
+        Top = 2
+        Height = 26
+        Align = alRight
+        Caption = 'Print'
+        TabOrder = 0
+        ExplicitLeft = 128
+        ExplicitTop = 8
+        ExplicitHeight = 25
+      end
+      object RzBtnClose: TRzBitBtn
+        Left = 167
+        Top = 2
+        Height = 26
+        Align = alRight
+        Caption = '&Close'
+        TabOrder = 1
+        OnClick = RzBtnCloseClick
+        ExplicitLeft = 192
+        ExplicitTop = 24
+        ExplicitHeight = 25
+      end
+    end
+    object RzPanel3: TRzPanel
+      Left = 2
+      Top = 2
+      Width = 319
+      Height = 23
+      Align = alTop
+      BorderOuter = fsBump
+      Caption = 'Purchase Report'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+end

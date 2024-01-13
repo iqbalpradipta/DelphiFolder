@@ -24,9 +24,6 @@ object frmCreatePurchaseOrder: TfrmCreatePurchaseOrder
     Align = alClient
     BevelInner = bvLowered
     TabOrder = 0
-    ExplicitLeft = -333
-    ExplicitWidth = 780
-    ExplicitHeight = 35
     object RzLabel1: TRzLabel
       Left = 48
       Top = 11
@@ -83,8 +80,6 @@ object frmCreatePurchaseOrder: TfrmCreatePurchaseOrder
       Align = alBottom
       BorderOuter = fsBump
       TabOrder = 3
-      ExplicitTop = 144
-      ExplicitWidth = 553
       object btnCancel: TRzBitBtn
         Left = 232
         Top = 8

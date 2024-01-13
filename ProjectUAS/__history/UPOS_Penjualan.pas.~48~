@@ -1,0 +1,213 @@
+unit UPOS_Penjualan;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UPOS_TransaksiData, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Vcl.StdCtrls, Vcl.Buttons,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, SMDBGrid,
+  RzTabs, RzPanel, RzDBNav, Vcl.ExtCtrls, RzButton, frxClass, frxDBSet;
+
+type
+  TfrmPenjualan = class(TfrmTransaksiData)
+    BitBtn1: TBitBtn;
+    FDQueryHeaderSALESID: TWideStringField;
+    FDQueryHeaderCUSTACCOUNT: TWideStringField;
+    FDQueryHeaderSALESDATE: TDateField;
+    FDQueryHeaderISPPN: TBooleanField;
+    FDQueryHeaderTOTALAMOUNT: TFMTBCDField;
+    FDQueryHeaderGRANDTOTAL: TFMTBCDField;
+    FDQueryHeaderUSERID: TWideStringField;
+    FDQueryHeaderTRANSDATE: TSQLTimeStampField;
+    FDQueryHeaderTOPCODE: TWideStringField;
+    FDQueryDetailSALESID: TWideStringField;
+    FDQueryDetailITEMID: TWideStringField;
+    FDQueryDetailQTY: TFMTBCDField;
+    FDQueryDetailUNIT: TWideStringField;
+    FDQueryDetailPRICE: TFMTBCDField;
+    FDQueryDetailLINEAMOUNT: TFMTBCDField;
+    FDQueryDetailRECORDID: TLargeintField;
+    FDQueryDetailTRANSDATE: TSQLTimeStampField;
+    FDQueryDetailUSERID: TWideStringField;
+    RzPanel3: TRzPanel;
+    RzBtnAddItem: TRzBitBtn;
+    FDQueryCustomerName: TFDQuery;
+    FDQuItem: TFDQuery;
+    DataSourceCustomer: TDataSource;
+    DsItem: TDataSource;
+    frxReportSales: TfrxReport;
+    DataSource1: TDataSource;
+    FDQuReportSales: TFDQuery;
+    FDQueryDetaillkItemName: TStringField;
+    FDQueryHeaderlkCustomerName: TStringField;
+    frxDBDataset1: TfrxDBDataset;
+    procedure FDQueryHeaderAfterInsert(DataSet: TDataSet);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
+    procedure FDQueryHeaderAfterScroll(DataSet: TDataSet);
+    procedure FDQueryHeaderNewRecord(DataSet: TDataSet);
+    procedure FDQueryDetailAfterPost(DataSet: TDataSet);
+    procedure RzBtnAddItemClick(Sender: TObject);
+    procedure FDQueryDetailQTYChange(Sender: TField);
+    procedure FDQueryDetailPRICEChange(Sender: TField);
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPenjualan: TfrmPenjualan;
+
+implementation
+Uses UPOS_DM, UPOS_CreateSO, UPOS_AddItemSales, UPOS_IqbalPradipta;
+{$R *.dfm}
+
+procedure TfrmPenjualan.BitBtn1Click(Sender: TObject);
+var
+wPath : string;
+begin
+  inherited;
+
+  wPath := ExtractFilePath(Application.ExeName);
+
+  with FDQuReportSales do
+    begin
+      sql.Clear();
+      sql.Add('SELECT * FROM vSales WHERE SALESID =:A');
+      Params[0].AsString := FDQueryHeaderSALESID.AsString;
+      open;
+    end;
+
+  with frxReportSales do
+    begin
+      LoadFromFile(wPath + 'rptSalesOrder.fr3');
+      TfrxMemoView(frxDBDataset1.FindComponent('MemoPrepareBy')).Text := frmMain.vUsersName;
+      ShowReport();
+    end;
+
+end;
+
+procedure TfrmPenjualan.FDQueryDetailAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  with DM.FDQuGlobal do
+    begin
+      sql.Clear;
+      sql.Add('SELECT SUM(LINEAMOUNT) AS TOTAL FROM SALESDETAIL WHERE SALESID =:A');
+      Params[0].AsString := FDQueryHeaderSALESID.AsString;
+      open;
+    end;
+
+    with DM.FDQuGlobal2 do
+    begin
+      sql.Clear;
+      sql.Add('UPDATE SALESHEADER SET TOTALAMOUNT =:A, GRANDTOTAL =:B WHERE SALESID =:C');
+      Params[0].AsFloat := DM.FDQuGlobal.FieldByName('TOTAL').AsFloat;
+      if FDQueryHeaderISPPN.AsBoolean = True then
+        Params[1].AsFloat := (DM.FDQuGlobal.FieldByName('TOTAL').AsFloat * 0.11) + DM.FDQuGlobal.FieldByName('TOTAL').AsFloat
+      else Params[1].AsFloat := DM.FDQuGlobal.FieldByName('TOTAL').AsFloat;
+      Params[2].AsString := FDQueryHeaderSALESID.AsString;
+      ExecSQL;
+    end;
+
+    FDQueryHeader.RefreshRecord();
+end;
+
+procedure TfrmPenjualan.FDQueryDetailPRICEChange(Sender: TField);
+begin
+  inherited;
+  FDQueryDetailLINEAMOUNT.AsFloat := FDQueryDetailQTY.AsFloat * FDQueryDetailPRICE.AsFloat;
+end;
+
+procedure TfrmPenjualan.FDQueryDetailQTYChange(Sender: TField);
+begin
+  inherited;
+  FDQueryDetailLINEAMOUNT.AsFloat := FDQueryDetailQTY.AsFloat * FDQueryDetailPRICE.AsFloat;
+end;
+
+procedure TfrmPenjualan.FDQueryHeaderAfterInsert(DataSet: TDataSet);
+begin
+  inherited;
+  DM.FDQueryGetRecordId.Active := True;
+  FDQueryHeaderSALESDATE.AsDateTime := DM.FDQueryGetRecordId.FieldByName('TRANSDATE').AsDateTime;
+  FDQueryHeaderTRANSDATE.AsDateTime := DM.FDQueryGetRecordId.FieldByName('TRANSDATE').AsDateTime;
+  FDQueryHeaderTOTALAMOUNT.AsCurrency := 0;
+  FDQueryHeaderGRANDTOTAL.AsCurrency := 0;
+  FDQueryHeaderISPPN.AsBoolean := True;
+  FDQueryHeaderUSERID.AsString := frmMain.vUsers;
+end;
+
+procedure TfrmPenjualan.FDQueryHeaderAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  with FDQueryDetail do
+    begin
+      sql.Clear;
+      sql.Add('SELECT * FROM SALESDETAIL WHERE SALESID =:SALESID');
+      Params[0].AsString := FDQueryHeaderSALESID.AsString;
+      Active := True;
+    end;
+end;
+
+procedure TfrmPenjualan.FDQueryHeaderNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  if frmCreateSalesOrder = nil then
+      begin
+        Application.CreateForm(TfrmCreateSalesOrder, frmCreateSalesOrder);
+        frmCreateSalesOrder.Show;
+      end;
+end;
+
+procedure TfrmPenjualan.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  WindowState := wsMinimized;
+  frmPenjualan := Nil;
+  Action := caFree;
+end;
+
+procedure TfrmPenjualan.FormCreate(Sender: TObject);
+begin
+  inherited;
+  with FDQueryHeader do
+    begin
+      sql.Clear;
+      sql.Add('SELECT * FROM SALESHEADER');
+      Active := True;
+    end;
+
+    with FDQueryDetail do
+    begin
+      sql.Clear;
+      sql.Add('SELECT * FROM SALESDETAIL');
+      Active := True;
+    end;
+
+    with FDQueryCustomerName do
+    begin
+      sql.Clear;
+      sql.Add('SELECT * FROM CUSTOMER');
+      Active := True;
+    end;
+end;
+
+procedure TfrmPenjualan.RzBtnAddItemClick(Sender: TObject);
+begin
+  inherited;
+  if frmAddItemSales = nil then
+      begin
+        Application.CreateForm(TfrmAddItemSales, frmAddItemSales);
+        frmAddItemSales.vType := 'SO';
+        frmAddItemSales.vPurchaseId := FDQueryHeaderSALESID.AsString;
+        frmAddItemSales.Show;
+      end;
+end;
+
+end.

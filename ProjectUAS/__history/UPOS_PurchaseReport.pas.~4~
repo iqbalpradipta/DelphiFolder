@@ -1,0 +1,78 @@
+unit UPOS_PurchaseReport;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RzButton, Vcl.ExtCtrls, RzPanel,
+  Vcl.StdCtrls, RzLabel, Vcl.Mask, RzEdit, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  frxClass, frxDBSet, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TfrmReportPurchase = class(TForm)
+    RzPanel1: TRzPanel;
+    RzPanel2: TRzPanel;
+    RzPanel3: TRzPanel;
+    RzBtnPrint: TRzBitBtn;
+    RzBtnClose: TRzBitBtn;
+    RzDateFrom: TRzDateTimeEdit;
+    RzDateTo: TRzDateTimeEdit;
+    RzLabel1: TRzLabel;
+    RzLabel2: TRzLabel;
+    FDQuReport: TFDQuery;
+    DataSource1: TDataSource;
+    frxDBDataset1: TfrxDBDataset;
+    frxReport1: TfrxReport;
+    procedure RzBtnCloseClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure RzBtnPrintClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmReportPurchase: TfrmReportPurchase;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmReportPurchase.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  WindowState := wsMinimized;
+  frmReportPurchase := Nil;
+  Action := caFree;
+end;
+
+procedure TfrmReportPurchase.RzBtnCloseClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfrmReportPurchase.RzBtnPrintClick(Sender: TObject);
+var
+wPath : string;
+begin
+  wPath := ExtractFilePath(Application.ExeName);
+
+  with FDQuReport do
+    begin
+      sql.Clear();
+      sql.Add('SELECT * FROM vPurchase WHERE PURCHASEID =:A');
+      Params[0].AsString := FDQueryHeaderPURCHASEID.AsString;
+      open;
+    end;
+
+  with frxReport1 do
+    begin
+      LoadFromFile(wPath + 'rptPurchaseOrder.fr3');
+      ShowReport();
+    end;
+end;
+
+end.

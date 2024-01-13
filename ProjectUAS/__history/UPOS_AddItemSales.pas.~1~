@@ -1,0 +1,44 @@
+unit UPOS_AddItemSales;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.Client, FireDAC.Comp.DataSet, Vcl.Grids, Vcl.DBGrids, SMDBGrid,
+  RzButton, Vcl.ExtCtrls, RzPanel;
+
+type
+  TfrmAddItemSales = class(TForm)
+    RzPanel1: TRzPanel;
+    RzPanel2: TRzPanel;
+    RzBtnOK: TRzBitBtn;
+    SMDBGrid2: TSMDBGrid;
+    FDQueryItem: TFDQuery;
+    DsItem: TDataSource;
+    FDQueryAddItem: TFDQuery;
+    FDQueryAddItemITEMID: TWideStringField;
+    FDQueryAddItemITEMNAME: TWideStringField;
+    FDQueryAddItemHARGABELI: TFMTBCDField;
+    FDQueryAddItemHARGAJUAL: TFMTBCDField;
+    FDQueryAddItemUNIT: TWideStringField;
+    FDQueryAddItemMARK: TBooleanField;
+    DsAddItem: TDataSource;
+    FDStoredAddItem: TFDStoredProc;
+    FDStoredAddSales: TFDStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmAddItemSales: TfrmAddItemSales;
+
+implementation
+Uses UPOS_DM, UPOS_Penjualan, UPOS_IqbalPradipta;
+{$R *.dfm}
+
+end.

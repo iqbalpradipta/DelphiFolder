@@ -1,0 +1,34 @@
+unit UPOS_SalesReport;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, RzEdit,
+  RzButton, RzLabel, Vcl.ExtCtrls, RzPanel;
+
+type
+  TfrmReportSales = class(TForm)
+    RzPanel1: TRzPanel;
+    RzLabel1: TRzLabel;
+    RzLabel2: TRzLabel;
+    RzPanel2: TRzPanel;
+    RzBtnPrint: TRzBitBtn;
+    RzBtnClose: TRzBitBtn;
+    RzPanel3: TRzPanel;
+    RzDateFrom: TRzDateTimeEdit;
+    RzDateTo: TRzDateTimeEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmReportSales: TfrmReportSales;
+
+implementation
+
+{$R *.dfm}
+
+end.

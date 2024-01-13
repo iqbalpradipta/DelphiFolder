@@ -1,0 +1,300 @@
+inherited frmPenjualan: TfrmPenjualan
+  Caption = 'Transaksi Penjualan'
+  ClientHeight = 463
+  OnClose = FormClose
+  OnCreate = FormCreate
+  ExplicitHeight = 502
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited Panel1: TPanel
+    inherited RzDBNavigator1: TRzDBNavigator
+      Hints.Strings = ()
+    end
+    object BitBtn1: TBitBtn
+      Left = 292
+      Top = 2
+      Width = 69
+      Height = 31
+      Align = alLeft
+      Caption = '&Print'
+      TabOrder = 1
+    end
+  end
+  inherited RzPanel2: TRzPanel
+    Height = 222
+    ExplicitHeight = 222
+    inherited RzPageControl2: TRzPageControl
+      Height = 218
+      ExplicitHeight = 218
+      FixedDimension = 19
+      inherited TabSheet2: TRzTabSheet
+        ExplicitHeight = 195
+        inherited SMDBGridDetail: TSMDBGrid
+          Width = 674
+          Height = 195
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'SALESID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ITEMID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'QTY'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'UNIT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PRICE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'LINEAMOUNT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'RECORDID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TRANSDATE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USERID'
+              Visible = True
+            end>
+        end
+        object RzPanel3: TRzPanel
+          Left = 674
+          Top = 0
+          Width = 98
+          Height = 195
+          Align = alRight
+          BorderOuter = fsBump
+          TabOrder = 1
+          object RzBtnAddItem: TRzBitBtn
+            Left = 2
+            Top = 2
+            Width = 94
+            Align = alTop
+            Caption = '& Add Item'
+            TabOrder = 0
+            OnClick = RzBtnAddItemClick
+          end
+        end
+      end
+    end
+  end
+  inherited RzPanel1: TRzPanel
+    inherited RzPageControl1: TRzPageControl
+      FixedDimension = 19
+      inherited TabSheet1: TRzTabSheet
+        inherited SMDBGridHeader: TSMDBGrid
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'SALESID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CUSTACCOUNT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SALESDATE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ISPPN'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOTALAMOUNT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'GRANDTOTAL'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USERID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TRANSDATE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOPCODE'
+              Visible = True
+            end>
+        end
+      end
+    end
+  end
+  inherited FDQueryHeader: TFDQuery
+    AfterInsert = FDQueryHeaderAfterInsert
+    AfterScroll = FDQueryHeaderAfterScroll
+    OnNewRecord = FDQueryHeaderNewRecord
+    SQL.Strings = (
+      'SELECT * FROM SALESHEADER')
+    Left = 427
+    Top = 89
+    object FDQueryHeaderSALESID: TWideStringField
+      FieldName = 'SALESID'
+      Origin = 'SALESID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object FDQueryHeaderCUSTACCOUNT: TWideStringField
+      FieldName = 'CUSTACCOUNT'
+      Origin = 'CUSTACCOUNT'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 10
+    end
+    object FDQueryHeaderSALESDATE: TDateField
+      FieldName = 'SALESDATE'
+      Origin = 'SALESDATE'
+    end
+    object FDQueryHeaderISPPN: TBooleanField
+      FieldName = 'ISPPN'
+      Origin = 'ISPPN'
+    end
+    object FDQueryHeaderTOTALAMOUNT: TFMTBCDField
+      FieldName = 'TOTALAMOUNT'
+      Origin = 'TOTALAMOUNT'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryHeaderGRANDTOTAL: TFMTBCDField
+      FieldName = 'GRANDTOTAL'
+      Origin = 'GRANDTOTAL'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryHeaderUSERID: TWideStringField
+      FieldName = 'USERID'
+      Origin = 'USERID'
+      Size = 10
+    end
+    object FDQueryHeaderTRANSDATE: TSQLTimeStampField
+      FieldName = 'TRANSDATE'
+      Origin = 'TRANSDATE'
+    end
+    object FDQueryHeaderTOPCODE: TWideStringField
+      FieldName = 'TOPCODE'
+      Origin = 'TOPCODE'
+    end
+  end
+  inherited FDQueryDetail: TFDQuery
+    AfterPost = FDQueryDetailAfterPost
+    MasterFields = 'SALESID'
+    SQL.Strings = (
+      'SELECT * FROM SALESDETAIL')
+    Left = 419
+    Top = 153
+    object FDQueryDetailSALESID: TWideStringField
+      FieldName = 'SALESID'
+      Origin = 'SALESID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object FDQueryDetailITEMID: TWideStringField
+      FieldName = 'ITEMID'
+      Origin = 'ITEMID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQueryDetailQTY: TFMTBCDField
+      FieldName = 'QTY'
+      Origin = 'QTY'
+      OnChange = FDQueryDetailQTYChange
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryDetailUNIT: TWideStringField
+      FieldName = 'UNIT'
+      Origin = 'UNIT'
+      Size = 10
+    end
+    object FDQueryDetailPRICE: TFMTBCDField
+      FieldName = 'PRICE'
+      Origin = 'PRICE'
+      OnChange = FDQueryDetailPRICEChange
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryDetailLINEAMOUNT: TFMTBCDField
+      FieldName = 'LINEAMOUNT'
+      Origin = 'LINEAMOUNT'
+      Precision = 18
+      Size = 2
+    end
+    object FDQueryDetailRECORDID: TLargeintField
+      FieldName = 'RECORDID'
+      Origin = 'RECORDID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQueryDetailTRANSDATE: TSQLTimeStampField
+      FieldName = 'TRANSDATE'
+      Origin = 'TRANSDATE'
+    end
+    object FDQueryDetailUSERID: TWideStringField
+      FieldName = 'USERID'
+      Origin = 'USERID'
+      Size = 10
+    end
+  end
+  object FDQueryCustomerName: TFDQuery
+    Active = True
+    Connection = DM.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM CUSTOMER')
+    Left = 243
+    Top = 105
+  end
+  object FDQuItem: TFDQuery
+    Connection = DM.FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM INVENTTABLE')
+    Left = 243
+    Top = 169
+  end
+  object DataSourceCustomer: TDataSource
+    DataSet = FDQueryCustomerName
+    Left = 315
+    Top = 121
+  end
+  object DsItem: TDataSource
+    DataSet = FDQuItem
+    Left = 312
+    Top = 176
+  end
+end

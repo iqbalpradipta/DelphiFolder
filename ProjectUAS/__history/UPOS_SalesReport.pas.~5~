@@ -1,0 +1,48 @@
+unit UPOS_SalesReport;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, RzEdit,
+  RzButton, RzLabel, Vcl.ExtCtrls, RzPanel;
+
+type
+  TfrmReportSales = class(TForm)
+    RzPanel1: TRzPanel;
+    RzLabel1: TRzLabel;
+    RzLabel2: TRzLabel;
+    RzPanel2: TRzPanel;
+    RzBtnPrint: TRzBitBtn;
+    RzBtnClose: TRzBitBtn;
+    RzPanel3: TRzPanel;
+    RzDateFrom: TRzDateTimeEdit;
+    RzDateTo: TRzDateTimeEdit;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure RzBtnCloseClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmReportSales: TfrmReportSales;
+
+implementation
+USES UPOS_DM;
+{$R *.dfm}
+
+procedure TfrmReportSales.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  WindowState := wsMinimized;
+  frmReportSales := Nil;
+  Action := caFree;
+end;
+
+procedure TfrmReportSales.RzBtnCloseClick(Sender: TObject);
+begin
+  Close;
+end;
+
+end.

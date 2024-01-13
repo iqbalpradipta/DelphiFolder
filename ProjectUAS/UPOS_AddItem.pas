@@ -32,8 +32,8 @@ type
     FDQueryAddItemUNIT: TWideStringField;
     FDQueryAddItemMARK: TBooleanField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormClick(Sender: TObject);
     procedure RzBtnOKClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,13 +45,20 @@ var
   frmAddItem: TfrmAddItem;
 
 implementation
-Uses UPOS_DM, UPOS_Pembelian;
+Uses UPOS_DM, UPOS_Pembelian, UPOS_IqbalPradipta;
 
 {$R *.dfm}
 
-procedure TfrmAddItem.FormClick(Sender: TObject);
+procedure TfrmAddItem.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  //Ambil data procedure dari server
+  WindowState := wsMinimized;
+  frmAddItem := Nil;
+  Action := caFree;
+end;
+
+procedure TfrmAddItem.FormCreate(Sender: TObject);
+begin
+ //Ambil data procedure dari server
   FDStoredAddItem.Close;
   FDStoredAddItem.Prepare;
   FDStoredAddItem.StoredProcName := 'POS.dbo.InsertSelectItem';
@@ -63,13 +70,6 @@ begin
       sql.Add('SELECT * FROM SELECTITEM');
       Active := True;
     end;
-end;
-
-procedure TfrmAddItem.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  WindowState := wsMinimized;
-  frmAddItem := Nil;
-  Action := caFree;
 end;
 
 procedure TfrmAddItem.RzBtnOKClick(Sender: TObject);
@@ -93,7 +93,7 @@ begin
               Close;
               Prepare;
               StoredProcName := 'POS.dbo.InsertPurchaseDetail';
-              ParamByName('@Userid').AsString := 'iqbal';
+              ParamByName('@Userid').AsString := frmMain.vUsers;
               ParamByName('@PurchaseId').AsString := vPurchaseId;
               ParamByName('@ItemId').AsString := FDQueryAddItem.FieldByName('ITEMID').AsString;
               ParamByName('@Qty').Value := 1.0;
@@ -103,12 +103,13 @@ begin
               ExecProc;
               Sleep(20);
             END;
+
             FDQueryAddItem.Next;
           END;
 
         frmPembelian.FDQueryDetail.Refresh;
-      end;
 
+      end;
       Close;
 
 end;

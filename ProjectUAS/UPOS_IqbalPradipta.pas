@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls,
-  Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ToolWin;
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ToolWin, System.Actions, Vcl.ActnList,
+  System.ImageList, Vcl.ImgList, RzStatus, RzPanel;
 
 type
   TfrmMain = class(TForm)
@@ -21,7 +22,6 @@ type
     Penjualan1: TMenuItem;
     ReportPenjualan1: TMenuItem;
     ReportPembelian1: TMenuItem;
-    StatusBar1: TStatusBar;
     ToolBar1: TToolBar;
     ToolButton1: TToolButton;
     ToolButton2: TToolButton;
@@ -34,23 +34,47 @@ type
     ToolButton9: TToolButton;
     ToolButton10: TToolButton;
     Image1: TImage;
+    Users1: TMenuItem;
+    ActionList1: TActionList;
+    Barang: TAction;
+    Supplier: TAction;
+    Customer: TAction;
+    UnitOfMeasurement: TAction;
+    Users: TAction;
+    Pembelian: TAction;
+    Penjualan: TAction;
+    ReportPenjualan: TAction;
+    ReportPembelian: TAction;
+    ToolButton11: TToolButton;
+    ImageList1: TImageList;
+    RzStatusBar1: TRzStatusBar;
+    RzStatusPane1: TRzStatusPane;
+    RzStatusPane2: TRzStatusPane;
+    RzClockStatus1: TRzClockStatus;
     procedure Barang1Click(Sender: TObject);
     procedure Supplier1Click(Sender: TObject);
     procedure Customer1Click(Sender: TObject);
     procedure Unit1Click(Sender: TObject);
     procedure Pembelian1Click(Sender: TObject);
+    procedure ReportPembelian1Click(Sender: TObject);
+    procedure Users1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Penjualan1Click(Sender: TObject);
+    procedure ReportPenjualanExecute(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    vUsers, vUsersName : String;
     function GetNumberSequencePO(sValue : string):String;
+    function GetNumberSequenceSO(sValue : string):String;
   end;
 
 var
   frmMain: TfrmMain;
 
 implementation
-Uses UPOS_DM, UPOS_Barang, UPOS_CUSTOMER, UPOS_Supplier, UPOS_Unit, UPOS_Pembelian;
+Uses UPOS_DM, UPOS_Barang, UPOS_CUSTOMER, UPOS_Supplier, UPOS_Unit, UPOS_Penjualan, UPOS_Pembelian, UPOS_PurchaseReport, UPOS_Users, UPOS_Login, UPOS_SalesReport;
 
 {$R *.dfm}
 
@@ -64,6 +88,18 @@ begin
   DM.FDStoredProcPO.Open;
 
   Result := DM.FDStoredProcPO.Fields[0].AsString;
+end;
+
+function TfrmMain.GetNumberSequenceSO(sValue: string):String;
+begin
+  //Ambil Store procedure
+  DM.FDStoredProcSO.Close;
+  DM.FDStoredProcSO.Prepare;
+  DM.FDStoredProcSO.StoredProcName := 'POS.dbo.GetNumberSequence';
+  DM.FDStoredProcSO.ParamByName('@Param').AsString := sValue;
+  DM.FDStoredProcSO.Open;
+
+  Result := DM.FDStoredProcSO.Fields[0].AsString;
 end;
 
 procedure TfrmMain.Barang1Click(Sender: TObject);
@@ -84,12 +120,54 @@ begin
       end;
 end;
 
+procedure TfrmMain.FormShow(Sender: TObject);
+var I : Integer;
+begin
+  for I := 0 to ActionList1.ActionCount - 1 do
+     begin
+          ActionList1.Actions[i].Visible := False;
+     end;
+
+   if frmLogin = nil then
+      begin
+        Application.CreateForm(TfrmLogin, frmLogin);
+        frmLogin.Show;
+      end;
+end;
+
 procedure TfrmMain.Pembelian1Click(Sender: TObject);
 begin
   if frmPembelian = nil then
       begin
         Application.CreateForm(TfrmPembelian, frmPembelian);
         frmPembelian.Show;
+      end;
+end;
+
+procedure TfrmMain.Penjualan1Click(Sender: TObject);
+begin
+   if frmPenjualan = nil then
+    begin
+      Application.CreateForm(TfrmPenjualan, frmPenjualan);
+      frmPenjualan.Show;
+    end;
+end;
+
+procedure TfrmMain.ReportPembelian1Click(Sender: TObject);
+begin
+  if frmReportPurchase = nil then
+      begin
+        Application.CreateForm(TfrmReportPurchase, frmReportPurchase);
+        frmReportPurchase.Show;
+      end;
+end;
+
+procedure TfrmMain.ReportPenjualanExecute(Sender: TObject);
+begin
+   if frmReportSales = nil then
+      begin
+        Application.CreateForm(TfrmReportSales, frmReportSales);
+        frmReportSales.Show;
       end;
 end;
 
@@ -108,6 +186,15 @@ begin
       begin
         Application.CreateForm(TfrmUnit, frmUnit);
         frmUnit.Show;
+      end;
+end;
+
+procedure TfrmMain.Users1Click(Sender: TObject);
+begin
+  if frmUsers = nil then
+      begin
+        Application.CreateForm(TfrmUsers, frmUsers);
+        frmUsers.Show;
       end;
 end;
 

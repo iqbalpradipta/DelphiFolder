@@ -1,5 +1,7 @@
 program PPOS_IqbalPradipta;
 
+
+
 uses
   Vcl.Forms,
   UPOS_IqbalPradipta in 'UPOS_IqbalPradipta.pas' {frmMain},
@@ -12,7 +14,14 @@ uses
   UPOS_TransaksiData in 'UPOS_TransaksiData.pas' {frmTransaksiData},
   UPOS_Pembelian in 'UPOS_Pembelian.pas' {frmPembelian},
   UPOS_CreatePO in 'UPOS_CreatePO.pas' {frmCreatePurchaseOrder},
-  UPOS_AddItem in 'UPOS_AddItem.pas' {frmAddItem};
+  UPOS_AddItem in 'UPOS_AddItem.pas' {frmAddItem},
+  UPOS_PurchaseReport in 'UPOS_PurchaseReport.pas',
+  UPOS_Users in 'UPOS_Users.pas' {frmUsers},
+  UPOS_Login in 'UPOS_Login.pas' {frmLogin},
+  UPOS_CreateSO in 'UPOS_CreateSO.pas' {frmCreateSalesOrder},
+  UPOS_Penjualan in 'UPOS_Penjualan.pas' {frmPenjualan},
+  UPOS_AddItemSales in 'UPOS_AddItemSales.pas' {frmAddItemSales},
+  UPOS_SalesReport in 'UPOS_SalesReport.pas' {frmReportSales};
 
 {$R *.res}
 

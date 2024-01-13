@@ -1,0 +1,118 @@
+object frmReportSales: TfrmReportSales
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'frmReportSales'
+  ClientHeight = 188
+  ClientWidth = 471
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object RzPanel1: TRzPanel
+    Left = 0
+    Top = 0
+    Width = 471
+    Height = 188
+    Align = alClient
+    BorderOuter = fsBump
+    TabOrder = 0
+    ExplicitWidth = 464
+    ExplicitHeight = 157
+    object RzLabel1: TRzLabel
+      Left = 70
+      Top = 67
+      Width = 36
+      Height = 13
+      Caption = 'Period'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object RzLabel2: TRzLabel
+      Left = 250
+      Top = 67
+      Width = 12
+      Height = 13
+      Caption = 'to'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object RzPanel2: TRzPanel
+      Left = 2
+      Top = 152
+      Width = 467
+      Height = 34
+      Align = alBottom
+      BorderOuter = fsBump
+      TabOrder = 0
+      ExplicitTop = 121
+      ExplicitWidth = 460
+      object RzBtnPrint: TRzBitBtn
+        Left = 390
+        Top = 2
+        Height = 30
+        Align = alRight
+        Caption = 'Print'
+        TabOrder = 0
+        ExplicitLeft = 383
+      end
+      object RzBtnClose: TRzBitBtn
+        Left = 315
+        Top = 2
+        Height = 30
+        Align = alRight
+        Caption = '&Close'
+        TabOrder = 1
+        OnClick = RzBtnCloseClick
+        ExplicitLeft = 308
+      end
+    end
+    object RzPanel3: TRzPanel
+      Left = 2
+      Top = 2
+      Width = 467
+      Height = 23
+      Align = alTop
+      BorderOuter = fsBump
+      Caption = 'Sales Report'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      ExplicitWidth = 460
+    end
+    object RzDateFrom: TRzDateTimeEdit
+      Left = 112
+      Top = 64
+      Width = 121
+      Height = 21
+      EditType = etDate
+      TabOrder = 2
+    end
+    object RzDateTo: TRzDateTimeEdit
+      Left = 268
+      Top = 64
+      Width = 121
+      Height = 21
+      EditType = etDate
+      TabOrder = 3
+    end
+  end
+end
